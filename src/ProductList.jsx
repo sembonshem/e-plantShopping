@@ -8,6 +8,7 @@ function ProductList() {
     const [showPlants, setShowPlants] = useState(false); // State to control the visibility of the About Us page
     const dispatch = useDispatch();
     const [addedToCart, setAddedToCart] = useState({});
+    const cart = useSelector(state => state.cart.items);
     const plantsArray = [
         {
             category: "Air Purifying Plants",
@@ -290,7 +291,10 @@ const handlePlantsClick = (e) => {
                 <img className="product-image" src={plant.image} alt={plant.name} />
                 <div className="product-title">{plant.name}</div>
                 {/*Similarly like the above plant.name show other details like description and cost*/}
-                <button  className="product-button" onClick={() => handleAddToCart(plant)}>Add to Cart</button>
+                <button  className={addedToCart.hasOwnProperty(plant.name)? 'product-button added-to-cart': 'product-button'} 
+                onClick={() => handleAddToCart(plant)}>
+                    {addedToCart.hasOwnProperty(plant.name)? "Added to Cart": "Add to Cart"}
+                    </button>
             </div>
             ))}
         </div>
