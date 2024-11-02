@@ -262,7 +262,7 @@ const handlePlantsClick = (e) => {
      setTotalQty((prevTotalQty) => prevTotalQty + 1);
   };
 
-  reduceTotalQty = () => {
+  const reduceTotalQty = () => {
     setTotalQty((prevTotalQty) => prevTotalQty - 1);
 }
 
@@ -316,7 +316,7 @@ const handlePlantsClick = (e) => {
 
         </div>
  ) :  (
-    <CartItem onContinueShopping={handleContinueShopping}/>
+    <CartItem onContinueShopping={handleContinueShopping} reduceTotalQty={reduceTotalQty}/>
 )}
     </div>
     );
