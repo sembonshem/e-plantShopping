@@ -11,9 +11,6 @@ function ProductList() {
     const cart = useSelector(state => state.cart.items);
     const [totalQty, setTotalQty] = useState(0);
 
-    const calculateTotalQuantity = () => cart.length;
-    setTotalQty(calculateTotalQuantity());
-
     const plantsArray = [
         {
             category: "Air Purifying Plants",
@@ -262,7 +259,14 @@ const handlePlantsClick = (e) => {
        ...prevState,
        [product.name]: true, // Set the product name as key and value as true to indicate it's added to cart
      }));
+     setTotalQty((prevTotalQty) => prevTotalQty + 1);
   };
+
+  reduceTotalQty = () => {
+    setTotalQty((prevTotalQty) => prevTotalQty - 1);
+}
+
+
 
     return (
         <div>
